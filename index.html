@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alim Dhanani — Backend Developer</title>
+<meta name="description" content="Alim Dhanani — backend-focused full-stack developer from Edmonton. Node.js, PostgreSQL, and scalable web applications." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #FAFAFD;
+    --surface: #FFFFFF;
+    --ink: #131A2A;
+    --muted: #5C6473;
+    --accent: #2C52CC;
+    --accent-2: #7A3CD6;
+    --accent-soft: #EEF1FF;
+    --line: #E6E8F0;
+    --ok: #1F9D6B;
+    --ok-soft: #E7F4EE;
+    --grad: linear-gradient(135deg, #2C52CC 0%, #6A3FD4 52%, #A23CC9 100%);
+    --maxw: 760px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(900px 460px at 18% -8%, rgba(106,63,212,.10) 0%, rgba(106,63,212,0) 60%),
+      radial-gradient(800px 420px at 90% 2%, rgba(44,82,204,.10) 0%, rgba(44,82,204,0) 55%),
+      var(--bg);
+    background-repeat: no-repeat;
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 76px 28px 96px; }
+
+  a { color: inherit; }
+
+  /* HERO */
+  .hero { display: flex; align-items: center; gap: 26px; }
+
+  .avatar-ring {
+    flex: 0 0 auto;
+    width: 112px; height: 112px;
+    border-radius: 50%;
+    background: var(--grad);
+    padding: 3px;
+    box-shadow: 0 10px 30px rgba(106,63,212,.22);
+  }
+  .avatar, .avatar-fallback {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    border: 3px solid var(--bg);
+    display: block;
+    object-fit: cover;
+    background: var(--surface);
+  }
+  .avatar-fallback {
+    display: none;
+    align-items: center; justify-content: center;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 800; font-size: 38px; color: #fff;
+    background: var(--grad);
+    border-color: var(--bg);
+  }
+
+  .hero-text { min-width: 0; }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid #DFE4FB;
+    border-radius: 999px;
+    padding: 5px 12px;
+    margin: 0 0 16px;
+  }
+
+  h1 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 7vw, 52px);
+    line-height: 1.03;
+    letter-spacing: -0.03em;
+    margin: 0 0 16px;
+  }
+
+  .lede {
+    font-size: clamp(18px, 3.3vw, 20px);
+    color: var(--muted);
+    max-width: 48ch;
+    margin: 0 0 26px;
+  }
+  .lede .grad {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+  }
+
+  .links { display: flex; flex-wrap: wrap; gap: 10px 12px; font-family: "JetBrains Mono", monospace; font-size: 14px; }
+  .links a {
+    text-decoration: none; color: var(--ink);
+    border-bottom: 1.5px solid var(--line);
+    padding-bottom: 2px;
+    transition: border-color .18s ease, color .18s ease;
+  }
+  .links a:hover, .links a:focus-visible { color: var(--accent); border-color: var(--accent); }
+
+  .rule { border: 0; border-top: 1px solid var(--line); margin: 56px 0; }
+
+  .section-label {
+    display: flex; align-items: center; gap: 9px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 22px;
+  }
+  .section-label::before {
+    content: ""; width: 22px; height: 3px; border-radius: 2px; background: var(--grad);
+  }
+
+  /* FEATURED CARD */
+  .card {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--surface);
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(19,26,42,.04), 0 14px 40px rgba(19,26,42,.06);
+  }
+  .card::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--grad);
+  }
+
+  .card-head { padding: 28px 28px 22px; }
+  .card-title-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .card h3 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700; font-size: 25px; letter-spacing: -0.015em; margin: 0;
+  }
+
+  .status {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: "JetBrains Mono", monospace; font-size: 12px;
+    color: var(--ok); background: var(--ok-soft);
+    border-radius: 999px; padding: 4px 10px;
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); animation: pulse 2.4s infinite; }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(31,157,107,.45); }
+    70% { box-shadow: 0 0 0 7px rgba(31,157,107,0); }
+    100% { box-shadow: 0 0 0 0 rgba(31,157,107,0); }
+  }
+
+  .card p { margin: 0 0 18px; color: var(--ink); }
+
+  .stack { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chip {
+    font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--accent);
+    border: 1px solid #DFE4FB; background: var(--accent-soft);
+    border-radius: 7px; padding: 3px 9px;
+  }
+
+  .shot { display: block; width: 100%; border-top: 1px solid var(--line); background: #EEF0F6; }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot-fallback {
+    display: flex; align-items: center; justify-content: center;
+    aspect-ratio: 16 / 9;
+    font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--muted);
+    text-align: center; padding: 20px;
+  }
+
+  .card-foot {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 18px;
+    padding: 20px 28px; border-top: 1px solid var(--line);
+    font-family: "JetBrains Mono", monospace; font-size: 14px;
+  }
+  .card-foot a {
+    text-decoration: none; color: var(--accent);
+    border-bottom: 1.5px solid transparent; transition: border-color .18s ease;
+  }
+  .card-foot a:hover, .card-foot a:focus-visible { border-color: var(--accent); }
+  .note { color: var(--muted); font-size: 12.5px; margin-left: auto; }
+
+  /* MINI CARDS */
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .mini {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    padding: 22px 22px 20px;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .mini::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+    background: var(--grad); opacity: 0; transition: opacity .18s ease;
+  }
+  .mini:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(19,26,42,.09);
+    border-color: #D3D9F2;
+  }
+  .mini:hover::before { opacity: 1; }
+
+  .mini h4 { font-family: "Plus Jakarta Sans", sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; margin: 0 0 4px; }
+  .mini .tag { font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--accent); margin: 0 0 12px; }
+  .mini p { font-size: 15px; line-height: 1.55; margin: 0 0 16px; color: var(--ink); }
+  .mini .stack { margin-bottom: 18px; }
+  .mini .chip { font-size: 11.5px; }
+  .mini a {
+    margin-top: auto;
+    font-family: "JetBrains Mono", monospace; font-size: 13.5px; color: var(--accent);
+    text-decoration: none; border-bottom: 1.5px solid transparent; align-self: flex-start;
+    transition: border-color .18s ease;
+  }
+  .mini a:hover, .mini a:focus-visible { border-color: var(--accent); }
+
+  .prose p { max-width: 62ch; margin: 0 0 16px; }
+  .prose p:last-child { margin-bottom: 0; }
+
+  footer { margin-top: 68px; font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--muted); }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--accent); }
+
+  .fade { opacity: 0; transform: translateY(10px); animation: rise .7s ease forwards; }
+  .fade:nth-child(2) { animation-delay: .06s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade { animation: none; opacity: 1; transform: none; }
+    .dot { animation: none; }
+    .mini { transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  @media (max-width: 620px) {
+    .wrap { padding: 54px 22px 72px; }
+    .hero { flex-direction: column; align-items: flex-start; gap: 18px; }
+    .note { margin-left: 0; width: 100%; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+
+    <header class="hero fade">
+      <div class="avatar-ring">
+        <img class="avatar" src="profile.jpg" alt="Alim Dhanani" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <div class="avatar-fallback" aria-hidden="true">AD</div>
+      </div>
+      <div class="hero-text">
+        <span class="eyebrow">Full-Stack Developer &middot; Edmonton, AB</span>
+        <h1>Alim Dhanani</h1>
+        <p class="lede">I build websites and full-stack web applications, with a particular strength on the <span class="grad">backend</span>; the APIs, data, and infrastructure that keep them running smoothly.</p>
+        <nav class="links" aria-label="Contact">
+          <a href="mailto:dhananialim07@gmail.com">dhananialim07@gmail.com</a>
+          <a href="https://github.com/adhanani90" target="_blank" rel="noopener">github.com/adhanani90</a>
+          <a href="https://www.linkedin.com/in/alim-dhanani-49a622168" target="_blank" rel="noopener">linkedin</a>
+        </nav>
+      </div>
+    </header>
+
+    <hr class="rule" />
+
+    <section>
+      <p class="section-label">Featured project</p>
+      <article class="card">
+        <div class="card-head">
+          <div class="card-title-row">
+            <h3>SquadVault</h3>
+            <span class="status"><span class="dot" aria-hidden="true"></span>live</span>
+          </div>
+          <p>A full-stack football club management platform built on Node.js and Express with a React front end, running on live Premier League data. Under the hood: Redis caching, BullMQ job queues, a Dockerized PostgreSQL database, and a GitHub Actions CI/CD pipeline deploying to Railway.</p>
+          <div class="stack">
+            <span class="chip">Node.js</span>
+            <span class="chip">Express</span>
+            <span class="chip">React</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">Redis</span>
+            <span class="chip">BullMQ</span>
+            <span class="chip">Docker</span>
+            <span class="chip">GitHub Actions</span>
+          </div>
+        </div>
+
+        <div class="shot">
+          <!-- Add a screenshot named squadvault.png next to this file. -->
+          <img src="squadvault.png" alt="SquadVault interface" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="shot-fallback" style="display:none;">add squadvault.png to show a screenshot here</div>
+        </div>
+
+        <div class="card-foot">
+          <a href="https://squadvault-production.up.railway.app/" target="_blank" rel="noopener">live demo &rarr;</a>
+          <a href="https://github.com/adhanani90/squadvault" target="_blank" rel="noopener">source &rarr;</a>
+        </div>
+      </article>
+    </section>
+
+    <hr class="rule" />
+
+    <section>
+      <p class="section-label">More projects</p>
+      <div class="grid">
+
+        <div class="mini">
+          <h4>SilentIntent</h4>
+          <p class="tag">Midnight Hackathon &middot; May 2026</p>
+          <p>A privacy-preserving procurement tool. It uses zero-knowledge proofs so a buyer can confirm a vendor meets their policy &mdash; price, credentials, forbidden terms &mdash; without ever revealing the policy itself.</p>
+          <div class="stack">
+            <span class="chip">TypeScript</span>
+            <span class="chip">Compact</span>
+            <span class="chip">Zero-Knowledge</span>
+            <span class="chip">Midnight</span>
+          </div>
+          <a href="https://github.com/vishnumahesha/midnight-hackathon" target="_blank" rel="noopener">repo &rarr;</a>
+        </div>
+
+        <div class="mini">
+          <h4>Due Date Finder</h4>
+          <p class="tag">Hackathon project</p>
+          <p>A full-stack web app pairing a JavaScript front end with a Python API to streamline date calculation and scheduling workflows.</p>
+          <div class="stack">
+            <span class="chip">JavaScript</span>
+            <span class="chip">Python</span>
+            <span class="chip">HTML / CSS</span>
+          </div>
+          <a href="https://github.com/prestonling/due-date-finder" target="_blank" rel="noopener">repo &rarr;</a>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="rule" />
+
+    <section class="prose">
+      <p class="section-label">Experience</p>
+      <p>At Ruhee Pharma I was the sole developer on a full Odoo ERP and CRM build. I gathered requirements directly from non-technical staff, handled multi-currency and bilingual French workflows, ran QA, and trained the team; the system replaced a legacy setup that had been corrupting their data. That project is where reliability stopped being an abstraction for me.</p>
+      <p>I work mostly in JavaScript and Python across the stack, and I pick up unfamiliar tooling quickly when a problem calls for it.</p>
+    </section>
+
+    <footer>
+      <p>Edmonton, AB &middot; <a href="mailto:dhananialim07@gmail.com">dhananialim07@gmail.com</a></p>
+    </footer>
+
+  </main>
+</body>
+</html>
